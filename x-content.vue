@@ -1,0 +1,32 @@
+<template>
+  <div v-if="config">
+    <template v-for="cols in config.params">
+      <el-row>
+        <template v-for="col in cols">
+          <el-col :span="24 / cols.length">
+            <div class="grid-content bg-purple-dark">
+              <span class="content-label">{{col.label}}</span>
+              <span class="content-text">{{config.data[col.param]}}</span>
+            </div>
+          </el-col>
+        </template>
+      </el-row>
+    </template>
+  </div>
+</template>
+
+<script>
+
+
+  export default {
+    props: {
+      config: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
+    }
+  }
+
+</script>
