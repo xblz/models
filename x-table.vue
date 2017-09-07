@@ -87,7 +87,7 @@
     filters: {
       /* 时间格式化 */
       formatDate(time) {
-        let date = new Date(Number(time));
+        var date = new Date(Number(time));
         return formatDate(date, "yyyy-MM-dd hh:mm");
       }
     },

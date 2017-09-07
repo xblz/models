@@ -70,13 +70,13 @@
     filters: {
       /* 时间格式化 */
       formatDate(time) {
-        let date = new Date(Number(time));
+        var date = new Date(Number(time));
         return formatDate(date, "yyyy-MM-dd hh:mm");
       }
     },
     methods: {
       datePickerFmt(param) {
-        if (typeof(this.searchForm[param]) != "number") {
+        if (typeof(this.searchForm[param]) !== "number") {
           this.searchForm[param] = Date.parse(this.searchForm[param]);
         }
       },
