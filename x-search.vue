@@ -7,7 +7,6 @@
         type: "input",  // input 输入框；date 日期选择器；select 选择器；为空不显示
         param: "name",  // 提交表单时，对应字段
         label: "姓名",  // 提示标题，默认为空，可为空
-        defValue: "",   // 默认值，默认为空，可为空
         placeholder: "请输入姓名", // 默认提示内容，默认为空，可为空
         options: [  //  type为 select 时，需要传入对应选择内容，label 显示文字；value 对应值
           {label: "男", value: "1"},

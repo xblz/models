@@ -42,7 +42,9 @@ config 格式字段说明：
             <!-- time -->
             <template v-else-if="model.type == 'time'">
               <el-form-item :label="model.label">
-                <el-time-select v-model="submitForm[model.param]" :picker-options="model.option" :placeholder="model.placeholder||'选择时间'" style="width: 100%">
+                <el-time-select v-model="submitForm[model.param]" :picker-options="model.option" :placeholder="model.placeholder||'选择时间'"
+                                style="width: 100%" :editable="false">
+
                 </el-time-select>
               </el-form-item>
             </template>
@@ -50,7 +52,10 @@ config 格式字段说明：
             <!-- date -->
             <template v-else-if="model.type == 'date'">
               <el-form-item :label="model.label">
-                <el-date-picker type="date" v-model="submitForm[model.param]" @change="datePickerFmt(model.param)" :placeholder="model.placeholder||'选择日期'" style="width: 100%"></el-date-picker>
+                <el-date-picker type="date" v-model="submitForm[model.param]" @change="datePickerFmt(model.param)" :placeholder="model.placeholder||'选择日期'"
+                                style="width: 100%" :editable="false">
+
+                </el-date-picker>
                 <!--:picker-options="pickerOptions">-->
               </el-form-item>
             </template>
@@ -58,7 +63,10 @@ config 格式字段说明：
             <!-- datetime -->
             <template v-else-if="model.type == 'datetime'">
               <el-form-item :label="model.label">
-                <el-date-picker type="datetime" v-model="submitForm[model.param]" @change="datePickerFmt(model.param)" :placeholder="model.placeholder||'选择日期'" style="width: 100%"></el-date-picker>
+                <el-date-picker type="datetime" v-model="submitForm[model.param]" @change="datePickerFmt(model.param)" :placeholder="model.placeholder||'选择日期'"
+                                style="width: 100%" :editable="false">
+
+                </el-date-picker>
               </el-form-item>
             </template>
 
@@ -129,7 +137,6 @@ config 格式字段说明：
   export default {
     methods: {
       datePickerFmt(param) {
-        alert(Date.parse(this.submitForm[param]))
         if (typeof(this.submitForm[param]) !== "number") {
           this.submitForm[param] = Date.parse(this.submitForm[param]);
         }
