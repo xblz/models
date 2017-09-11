@@ -6,10 +6,10 @@
       {
         label: "地址",  // 表格title，默认为空，可为空
         prop: "address",  // 列表数据取值字段，默认为空，可为空
-        type: "label",  // label 文字；switch 开关；date 日期；href 链接类；button 操作按钮； 默认为空，可为空，为空时显示文字
-        action(index, obj) {}, // type 为 href 时，点击操作执行函数，index 对应数据位置；obj 对应数据内容
+        type: "",  // switch 开关；date 日期；button 操作按钮； 默认为空，可为空，为空时显示文字
+        adapter:{0:"成功", 1:"失败"},  // type 为 空 或者 button 时，显示文字可根据传入对象显示内容
         buttons: [  // type 为 button 时，扩展按钮
-          {text: "修改", action(index, obj) {}},  // text 按钮文字； action 点击操作执行函数，index 对应数据位置；obj 对应数据内容
+          {text: "修改", action(index, obj) {}},  // text 按钮文字,可为空，为空时显示 prop 值； action 点击操作执行函数，index 对应数据位置；obj 对应数据内容
           {text: "删除", action(index, obj) {}}
         ]
       }
@@ -44,13 +44,8 @@
           <!-- 按钮 -->
           <template v-if="table.type == 'button'">
             <template v-for="button in table.buttons">
-              <el-button type="text" @click="button.action(scope.$index, scope.row)">{{button.text}}</el-button>
+              <el-button type="text" @click="button.action(scope.$index, scope.row)">{{button.text || (table.adapter ? table.adapter[scope.row[table.prop]] : scope.row[table.prop])}}</el-button>
             </template>
-          </template>
-
-          <!-- 链接 -->
-          <template v-else-if="table.type == 'href'">
-            <el-button type="text" @click="table.action(scope.$index, scope.row)">{{scope.row[table.prop]}}</el-button>
           </template>
 
           <!-- 日期 -->
@@ -60,17 +55,12 @@
 
           <!-- 选择器 -->
           <template v-else-if="table.type == 'switch'">
-            <el-switch on-color="#13ce66" off-color="#ff4949" on-text="" off-text="" v-model="scope.row[table.prop]" on-value="1" off-value="0"></el-switch>
+            <el-switch on-color="#13ce66" off-color="#ff4949" on-text="" off-text="" v-model="scope.row[table.prop]" :on-value="1" :off-value="0"></el-switch>
           </template>
 
-          <!-- 文字 -->
-          <template v-else-if="table.type == 'label'">
-            <span>{{scope.row[table.prop]}}</span>
-          </template>
-
-          <!-- 默认 -->
+          <!-- 默认 文字-->
           <template v-else="">
-            <span>{{scope.row[table.prop]}}</span>
+            <span>{{table.adapter ? table.adapter[scope.row[table.prop]] : scope.row[table.prop]}}</span>
           </template>
 
         </template>
