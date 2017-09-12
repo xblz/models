@@ -22,7 +22,7 @@
 
   <el-table v-if="config" :data="config.data" border>
     <template v-if="config.expandParams">
-      <el-table-column type="expand">
+      <el-table-column type="expand" header-align="center" align="center">
         <template scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
 
@@ -38,7 +38,7 @@
     </template>
 
     <template v-for="table in config.params">
-      <el-table-column :label="table.label" :width="table.width">
+      <el-table-column :label="table.label" :width="table.width" header-align="center" align="center">
         <template scope="scope">
 
           <!-- 按钮 -->

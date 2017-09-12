@@ -20,14 +20,14 @@
 <template>
   <!-- 筛选功能 -->
 
-  <el-form v-if="config" :inline="true" :model="searchForm" label-width="80px">
+  <el-form v-if="config" :inline="true" :model="searchForm" label-width="120px">
 
     <template v-for="model in config.params">
 
       <!-- input -->
       <template v-if="model.type == 'input'">
         <el-form-item :label="model.label">
-          <el-input v-model="searchForm[model.param]" :placeholder="model.placeholder"></el-input>
+          <el-input v-model="searchForm[model.param]" :placeholder="model.placeholder" style="margin-right: 25px;"></el-input>
         </el-form-item>
       </template>
 
@@ -51,11 +51,10 @@
       </template>
 
     </template>
-
-    <el-button type="primary" @click="config.onSearch(searchForm)">查询</el-button>
-
-    <el-button type="warning" @click="searchForm = {}">重置</el-button>
-
+    <el-form-item label=" ">
+      <el-button type="primary" @click="config.onSearch(searchForm)">查询</el-button>
+      <el-button type="warning" @click="searchForm = {}">重置</el-button>
+    </el-form-item>
   </el-form>
 
 </template>
