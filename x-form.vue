@@ -124,9 +124,9 @@ config 格式字段说明：
 
 
     <div style="text-align: center">
-      <el-button @click="config.onCancel">取消</el-button>
+      <el-button v-if="config.onCancel" @click="config.onCancel">取消</el-button>
 
-      <el-button type="primary" @click="config.onSubmit(submitForm)">确定</el-button>
+      <el-button type="primary" @click="config.onSubmit(submitForm)">提交</el-button>
     </div>
 
   </el-form>
@@ -165,6 +165,23 @@ config 格式字段说明：
         default() {
           return {}
         }
+      }
+    },
+    watch: {
+      "config.data"() {
+        const context = this;
+        const params = context.config.params;
+        var data = {};
+        params.map(function (items) {
+          items.map(function (item) {
+            if (item.type === "checkbox") {
+              data[item.param] = context.config.data[item.param] || [];
+            } else if (item.type) {
+              data[item.param] = context.config.data[item.param] || '';
+            }
+          })
+        });
+        context.submitForm = data;
       }
     }
   }

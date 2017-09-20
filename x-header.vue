@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #1F2D3D;">
+  <div style="background-color: #1F2D3B;">
     <!--logo-->
     <div>
       <img src="./../assets/img/logo.png" style="height: 30px;width: 30px;vertical-align: middle;margin:10px;">

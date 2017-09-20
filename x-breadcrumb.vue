@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb separator="/" :replace="true" style="padding: 10px;border-bottom: 1px solid #e7ecf1">
+  <el-breadcrumb separator="/" :replace="true" style="padding: 10px;border-bottom: 1px solid #1F2D3B">
     <template v-for="item in breadcrumbs">
       <el-breadcrumb-item :to="{ path: item.path }">{{item.name}}</el-breadcrumb-item>
     </template>

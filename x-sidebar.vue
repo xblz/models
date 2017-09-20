@@ -1,6 +1,6 @@
 <template>
-  <div class="grid-content bg-purple-dark" style="height: 100%;background-color: #324057;overflow-y: auto;">
-    <el-menu :default-active="active" :router=true :unique-opened=true theme="dark" style="height: 100%;">
+  <div class="grid-content" style="height: 100%;background-color: #1F2D3B;overflow-y: auto;">
+    <el-menu :default-active="active" :router=true :unique-opened=true style="height: 100%;">
       <template v-for="item in this.config">
         <template v-if="item.children">
           <el-submenu :index="item.name">
@@ -21,7 +21,7 @@
   export default {
     data() {
       return {
-        active: this.$route.path
+        active: this.$route.matched.length >= 3 ? this.$route.matched[1].path : this.$route.path
       }
     },
     props: {
@@ -33,8 +33,12 @@
       }
     },
     watch: {
-      $route() {
-        this.active = this.$route.path
+      $route(to, form) {
+        if (to.path.indexOf(form.path) !== -1) {
+          this.active = form.path
+        } else {
+          this.active = to.path
+        }
       }
     }
   }

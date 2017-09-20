@@ -20,7 +20,7 @@
 <template>
   <!-- 表格功能-->
 
-  <el-table v-if="config" :data="config.data" border>
+  <el-table v-if="config" :data="config.data">
     <template v-if="config.expandParams">
       <el-table-column type="expand" header-align="center" align="center">
         <template scope="props">
@@ -55,7 +55,7 @@
 
           <!-- 选择器 -->
           <template v-else-if="table.type == 'switch'">
-            <el-switch on-color="#13ce66" off-color="#ff4949" on-text="" off-text="" v-model="scope.row[table.prop]" :on-value="1" :off-value="0"></el-switch>
+            <el-switch on-text="" off-text="" v-model="scope.row[table.prop]" :on-value="1" :off-value="0"></el-switch>
           </template>
 
           <!-- 默认 文字-->

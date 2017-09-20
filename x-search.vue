@@ -53,7 +53,7 @@
     </template>
     <el-form-item label=" ">
       <el-button type="primary" @click="config.onSearch(searchForm)">查询</el-button>
-      <el-button type="warning" @click="searchForm = {}">重置</el-button>
+      <el-button @click="searchForm = {}">重置</el-button>
     </el-form-item>
   </el-form>
 

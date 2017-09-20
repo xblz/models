@@ -4,7 +4,7 @@
       <el-row>
         <template v-for="col in cols">
           <el-col :span="24 / cols.length">
-            <div class="grid-content bg-purple-dark">
+            <div class="grid-content">
               <span class="content-label">{{col.label}}</span>
               <span class="content-text">{{config.data[col.param]}}</span>
             </div>
